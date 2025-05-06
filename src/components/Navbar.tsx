@@ -31,18 +31,37 @@ function MobileNavbar() {
   return (
     <div className="block sm:hidden">
       <Button
+        className="relative h-8 w-8  transition-all"
         onClick={() => {
           setMenuToggled(!menuToggled);
         }}
       >
-        {menuToggled ? <X /> : <Menu />}
+        <span
+          className={`absolute h-0.5 w-5 bg-white transition-all ${
+            menuToggled
+              ? "top-1/2 -translate-y-1/2 rotate-45"
+              : "top-2 -translate-y-0 rotate-0"
+          }`}
+        />
+        <span
+          className={`absolute h-0.5 w-5 bg-white transition-all ${
+            menuToggled
+              ? "top-1/2 -translate-y-1/2 -rotate-45"
+              : "top-4 -translate-y-1/2 rotate-0"
+          }`}
+        />
+        <span
+          className={`absolute h-0.5 w-5 bg-white transition-all ${
+            menuToggled ? "opacity-0" : "top-6 -translate-y-full opacity-100"
+          }`}
+        />
       </Button>
       {
         <nav
-          className={clsx(
-            "absolute top-12 left-0 w-screen h-[calc(100vh-3rem)] bg-green-200 transition duration-300 ease-in-out",
-            { "-z-10 opacity-0": !menuToggled, "-z10 opacity-100": menuToggled }
-          )}
+          className={`
+            absolute top-12 left-0 w-screen h-[calc(100vh-3rem)] bg-green-200 transition duration-300 ease-in-out
+            ${menuToggled ? "-z10 opacity-100" : "-z-10 opacity-0"}
+          )`}
         >
           <ul className="flex-col gap-4">
             <li>
