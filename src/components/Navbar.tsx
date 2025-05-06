@@ -2,8 +2,6 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Menu, X } from "lucide-react";
-import clsx from "clsx";
 
 import { Button } from "./ui/button";
 
