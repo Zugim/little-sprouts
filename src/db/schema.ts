@@ -13,8 +13,11 @@ export const users = pgTable(
     clerkId: text("clerk_id").unique().notNull(),
     name: text("name").notNull(),
     imageUrl: text("image_url").notNull(),
-    createdAt: timestamp("created_at").defaultNow().notNull(),
-    updatedAt: timestamp("updated_at").defaultNow().notNull(),
+    createdAt: timestamp("created_at", { mode: "date" }).defaultNow().notNull(),
+    updatedAt: timestamp("updated_at", { mode: "date" })
+      .defaultNow()
+      .$onUpdate(() => new Date())
+      .notNull(),
   },
   (table) => [uniqueIndex("clerk_id_idx").on(table.clerkId)]
 );
