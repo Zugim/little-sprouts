@@ -4,19 +4,26 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
+    "dev:webhook": "ngrok http --url=firm-scarcely-albacore.ngrok-free.app 3000",
+    "dev:dbStudio": "bunx drizzle-kit studio",
+    "dev:all": "concurrently \"bun run dev\" \"bun run dev:webhook\" \"bun run dev:dbStudio\"",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
     "@clerk/nextjs": "^6.19.1",
+    "@neondatabase/serverless": "^1.0.0",
     "@radix-ui/react-slot": "^1.2.2",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "dotenv": "^16.5.0",
+    "drizzle-orm": "^0.43.1",
     "lucide-react": "^0.507.0",
     "next": "15.3.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "svix": "^1.65.0",
     "tailwind-merge": "^3.2.0"
   },
   "devDependencies": {
@@ -25,6 +32,8 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "concurrently": "^9.1.2",
+    "drizzle-kit": "^0.31.1",
     "eslint": "^9",
     "eslint-config-next": "15.3.1",
     "tailwindcss": "^4",
